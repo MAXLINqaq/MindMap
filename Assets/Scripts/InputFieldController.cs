@@ -16,15 +16,13 @@ public class InputFieldController : MonoBehaviour
     {
         
     }
-    private void SetLayout()
-    {
 
-    }
 
 
     public void Drag()//鼠标拖动事件，变换位置。
     {
-        transform.position = Input.mousePosition;
+        RectTransform rect = transform.GetComponent<RectTransform>();
+        transform.position = Input.mousePosition-new Vector3 (rect.rect.width/2 ,0,0);
     }
 
 
