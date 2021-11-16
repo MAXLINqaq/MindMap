@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1653876396}
     m_Modifications:
+    - target: {fileID: 8902316074037863231, guid: 4a2331639f422c04682eeaa86889d586, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8902316074385732797, guid: 4a2331639f422c04682eeaa86889d586, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -217,6 +221,10 @@ PrefabInstance:
     - target: {fileID: 8902316074385732798, guid: 4a2331639f422c04682eeaa86889d586, type: 3}
       propertyPath: m_Name
       value: Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902316075183417758, guid: 4a2331639f422c04682eeaa86889d586, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a2331639f422c04682eeaa86889d586, type: 3}
@@ -308,56 +316,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &566114097 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5612828105640164060, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
-  m_PrefabInstance: {fileID: 5612828106205990381}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &566114098 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5612828105640164063, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
   m_PrefabInstance: {fileID: 5612828106205990381}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &566114099
+--- !u!1 &895983278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 895983280}
+  - component: {fileID: 895983279}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &895983279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566114097}
+  m_GameObject: {fileID: 895983278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: c79216079569b924ea517b13a681ea13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 5
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 566114103}
-          m_TargetAssemblyTypeName: InputFieldController, Assembly-CSharp
-          m_MethodName: Drag
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &566114103 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5612828105640164058, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
-  m_PrefabInstance: {fileID: 5612828106205990381}
+--- !u!4 &895983280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566114097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d234837d3e6fa4b42bfbc12312098966, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_GameObject: {fileID: 895983278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 435.97763, y: 237.88774, z: -75.46244}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1653876392
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,829 +561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedcd9bc8b92ca7449871dba7a0370e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zhuti:
-  - Parent: {fileID: 0}
-    Child:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    test: 00000000
-  - Parent: {fileID: 0}
-    Child:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
-  - Parent: {fileID: 0}
-    Child: []
-    test: 
 --- !u!4 &2039388143
 Transform:
   m_ObjectHideFlags: 0
@@ -1540,21 +723,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5612828105640164059, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
-      propertyPath: fontSize
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612828105640164059, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
-      propertyPath: fixedWidth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612828105640164059, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
-      propertyPath: keepInitWidthSize
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5612828105640164060, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
       propertyPath: m_Name
       value: Level0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612828105640164062, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612828105640164062, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612828105640164062, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5612828105640164063, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
       propertyPath: m_Pivot.x
@@ -1622,11 +805,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5612828105640164063, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -64.9
+      value: -87.6
       objectReference: {fileID: 0}
     - target: {fileID: 5612828105640164063, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.127304
+      value: 12.611
       objectReference: {fileID: 0}
     - target: {fileID: 5612828105640164063, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1645,6 +828,10 @@ PrefabInstance:
       value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5612828105762057565, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612828105762057565, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
       propertyPath: m_FontData.m_MinSize
       value: 2
       objectReference: {fileID: 0}
@@ -1652,11 +839,20 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5612828106907641852, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612828106907641852, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5612828106907641853, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.5
+      value: -2.3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 63598cd6a344b4f40803e0b6f8222a65, type: 3}
 --- !u!224 &8902316075506075432 stripped
 RectTransform:

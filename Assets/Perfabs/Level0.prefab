@@ -158,6 +158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iLevel: 0
+  sentences: 
+  offsetPos: {x: 0, y: 0}
 --- !u!114 &5612828105640164059
 MonoBehaviour:
   m_ObjectHideFlags: 0
