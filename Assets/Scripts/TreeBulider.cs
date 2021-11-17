@@ -37,8 +37,7 @@ public class TreeBulider : MonoBehaviour
 
         //List<Block> list = new List<Block> { block, block1 };
         //File.WriteAllText(Application.dataPath + "/Data1.json", JsonMapper.ToJson(list));
-        Save(block);
-        Save (block1);
+
 
     }
     public void Save(Block block)
@@ -82,6 +81,7 @@ public class TreeBulider : MonoBehaviour
 
         StreamWriter sw = new StreamWriter(filePath);
         string json = JsonMapper.ToJson(blockList.list);
+        json = "{ \"list\":" + json + "}";
         sw.WriteLine(json);
         sw.Close();
         sw.Dispose();
