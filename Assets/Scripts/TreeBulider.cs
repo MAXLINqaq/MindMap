@@ -5,6 +5,7 @@ using System;
 using LitJson;
 using System.IO;
 using UnityEditor;
+using UnityEngine.UI;
 
 
 public class Block
@@ -23,22 +24,19 @@ public class BlockList
 public class TreeBulider : MonoBehaviour
 {
     public BlockList blockList = null;
+
+    public GameObject Level0;
+    public GameObject Level1;
+    public GameObject Level2;
+
+   
     void Start()
     {
-        Block block = new Block();
-        block.Contents = "Î°´óµÄ";
-        block.Pos = 1;
-        block.PartentPos = 0;
-
-        Block block1 = new Block();
-        block1.Contents = "à½à½à½";
-        block1.Pos = 0;
-        block1.PartentPos = -1;
+        buildTree();
 
         //List<Block> list = new List<Block> { block, block1 };
         //File.WriteAllText(Application.dataPath + "/Data1.json", JsonMapper.ToJson(list));
-
-
+  
     }
     public void Save(Block block)
     {
@@ -87,6 +85,46 @@ public class TreeBulider : MonoBehaviour
         sw.Dispose();
         AssetDatabase.Refresh();
     }
+    private void buildTree()
+    {
+        string filePath = Application.dataPath + @"/Data1.json";
+        StreamReader sr = new StreamReader(filePath);
+        JsonReader js = new JsonReader(sr);
+        BlockList blockList = JsonMapper.ToObject<BlockList>(js);
+        sr.Close();
+        for (int i = 0; i < blockList.list.Count; i++)
+        {
+            GameObject tempObject;
+            if (i == 0)
+            {
+                tempObject = Instantiate(Level0);
 
+                
+            }
+            else if (blockList.list[i].PartentPos == 0)
+            {
+                tempObject = Instantiate(Level1);
+       
+                
+            }
+            else 
+            {
+                tempObject = Instantiate(Level2);
+
+            }
+            tempObject.GetComponent<InputFieldController>().contents = blockList.list[i].Contents;    
+            tempObject.name = blockList.list[i].Pos.ToString();
+
+            if (i == 0)
+            {
+                tempObject.transform.parent = GameObject.Find("Canvas").gameObject.transform;
+            }
+            else
+            {
+                tempObject.transform.parent = GameObject.Find(blockList.list[i].PartentPos.ToString()).gameObject.transform;
+            }
+        }    
+
+    }
 
 }
