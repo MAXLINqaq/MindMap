@@ -97,27 +97,22 @@ public class TreeBulider : MonoBehaviour
             GameObject tempObject;
             if (i == 0)
             {
-                tempObject = Instantiate(Level0);
-
-                
+                tempObject = Instantiate(Level0);              
             }
             else if (blockList.list[i].PartentPos == 0)
             {
                 tempObject = Instantiate(Level1);
-       
-                
             }
             else 
             {
                 tempObject = Instantiate(Level2);
-
             }
             tempObject.GetComponent<InputFieldController>().contents = blockList.list[i].Contents;    
             tempObject.name = blockList.list[i].Pos.ToString();
 
             if (i == 0)
             {
-                tempObject.transform.parent = GameObject.Find("Canvas").gameObject.transform;
+                tempObject.transform.parent = GameObject.Find("Map").gameObject.transform;
             }
             else
             {
