@@ -12,10 +12,12 @@ public class Block
     public string Contents { get; set; }
     public int Pos { get; set; }//在数组中的位置
     public int PartentPos { get; set; }//父节点在数组中的位置
+
+
 }
 public class BlockList
 {
-    public List<Block> list = new List<Block>();
+    public List<Block> list  { get; set; }
 }
 
 public class TreeBulider : MonoBehaviour
@@ -24,22 +26,33 @@ public class TreeBulider : MonoBehaviour
     void Start()
     {
         Block block = new Block();
-        block.Contents = "1";
-        block.Pos = 14;
-        block.PartentPos = 231;
-        
-        Save(block);
+        block.Contents = "伟大的";
+        block.Pos = 1;
+        block.PartentPos = 0;
+
         Block block1 = new Block();
-        block1.Contents = "asdadwa";
-        block1.Pos = 12;
-        block1.PartentPos = 1;
-        Save(block1);
+        block1.Contents = "嘟嘟嘟";
+        block1.Pos = 0;
+        block1.PartentPos = -1;
+
+        //List<Block> list = new List<Block> { block, block1 };
+        //File.WriteAllText(Application.dataPath + "/Data1.json", JsonMapper.ToJson(list));
+        Save(block);
+        Save (block1);
+
     }
     public void Save(Block block)
     {
         string filePath = Application.dataPath + @"/Data1.json";
+        StreamReader sr = new StreamReader(filePath);
+        JsonReader js = new JsonReader(sr);
+        BlockList blockList = JsonMapper.ToObject<BlockList>(js);
+        for (int i = 0; i < blockList.list.Count; i++)
+        {
+            Debug.Log(blockList.list[i].Contents);
+        }
+        sr.Close();
 
-        blockList = new BlockList();
         if (!File.Exists(filePath))
         {
             blockList.list.Add(block);
@@ -66,8 +79,8 @@ public class TreeBulider : MonoBehaviour
             }
         }
 
-        FileInfo file = new FileInfo(filePath);
-        StreamWriter sw = file.CreateText();
+
+        StreamWriter sw = new StreamWriter(filePath);
         string json = JsonMapper.ToJson(blockList.list);
         sw.WriteLine(json);
         sw.Close();

@@ -51,7 +51,6 @@
      <Compile Include="Assets\Scripts\Tools\UGUI\InputFieldScaler.cs" />
      <Compile Include="Assets\Scripts\InputFieldController.cs" />
      <Compile Include="Assets\Scripts\AutoScale.cs" />
-     <Compile Include="Assets\WriteJson.cs" />
  <Reference Include="UnityEngine">
  <HintPath>G:/2020.3.14f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
