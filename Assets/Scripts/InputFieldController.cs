@@ -20,11 +20,9 @@ public class InputFieldController : MonoBehaviour, IDragHandler, IPointerDownHan
         {
             inputfield.text = contents;
         }
+        inputfield.lineType = InputField.LineType.MultiLineSubmit;
     }
-    void OnEndEdit(string text)
-    {
-        inputfield.interactable = false;
-    }
+
     void Awake()
     {
         
@@ -37,7 +35,10 @@ public class InputFieldController : MonoBehaviour, IDragHandler, IPointerDownHan
     {
         if (inputfield.interactable == true)
         {
-            inputfield.onEndEdit.AddListener(OnEndEdit);
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                inputfield.interactable = false;
+            }
         }
        
     }
