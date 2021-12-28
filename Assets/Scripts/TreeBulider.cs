@@ -11,14 +11,14 @@ using UnityEngine.UI;
 public class Block
 {
     public string Contents { get; set; }
-    public int Pos { get; set; }//ÔÚÊı×éÖĞµÄÎ»ÖÃ
-    public int PartentPos { get; set; }//¸¸½ÚµãÔÚÊı×éÖĞµÄÎ»ÖÃ
+    public int Pos { get; set; }//è‡ªèº«åœ¨æ•°ç»„ä¸­çš„ä½ç½®
+    public int PartentPos { get; set; }//çˆ¶èŠ‚ç‚¹çš„ä½ç½®
 
 
 }
 public class BlockList
 {
-    public List<Block> list  { get; set; }
+    public List<Block> list { get; set; }
 }
 
 public class TreeBulider : MonoBehaviour
@@ -29,14 +29,14 @@ public class TreeBulider : MonoBehaviour
     public GameObject Level1;
     public GameObject Level2;
 
-   
+
     void Start()
     {
         buildTree();
 
         //List<Block> list = new List<Block> { block, block1 };
         //File.WriteAllText(Application.dataPath + "/Data1.json", JsonMapper.ToJson(list));
-  
+
     }
     public void Save(Block block)
     {
@@ -97,28 +97,31 @@ public class TreeBulider : MonoBehaviour
             GameObject tempObject;
             if (i == 0)
             {
-                tempObject = Instantiate(Level0);              
+                tempObject = Instantiate(Level0);
             }
             else if (blockList.list[i].PartentPos == 0)
             {
                 tempObject = Instantiate(Level1);
             }
-            else 
+            else
             {
                 tempObject = Instantiate(Level2);
             }
-            tempObject.GetComponent<InputFieldController>().contents = blockList.list[i].Contents;    
+            tempObject.GetComponent<InputFieldController>().contents = blockList.list[i].Contents;
             tempObject.name = blockList.list[i].Pos.ToString();
 
             if (i == 0)
             {
                 tempObject.transform.parent = GameObject.Find("Map").gameObject.transform;
+                tempObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+
             }
             else
             {
                 tempObject.transform.parent = GameObject.Find(blockList.list[i].PartentPos.ToString()).gameObject.transform;
+                tempObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             }
-        }    
+        }
 
     }
 
