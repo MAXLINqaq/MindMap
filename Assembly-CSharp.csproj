@@ -38,10 +38,13 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\TreeBulider.cs" />
      <Compile Include="Assets\Scripts\Scale.cs" />
+     <Compile Include="Assets\CameraController.cs" />
+     <Compile Include="Assets\ThemeController.cs" />
      <Compile Include="Assets\Scripts\Tools\UGUI\InputFieldScaler.cs" />
      <Compile Include="Assets\Scripts\InputFieldController.cs" />
-     <Compile Include="Assets\CameraController.cs" />
+     <Compile Include="Assets\OpenButtonController.cs" />
      <Compile Include="Assets\SaveButtonController.cs" />
+     <Compile Include="Assets\Exit.cs" />
     <Reference Include="UnityEngine">
         <HintPath>G:\2020.3.14f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

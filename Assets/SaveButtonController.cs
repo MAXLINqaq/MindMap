@@ -21,7 +21,8 @@ public class SaveButtonController : MonoBehaviour
     }
     public void Confirm()
     {
-        treeBuilder.SendMessage("Save", ObjInputField.GetComponent<InputField>().text, SendMessageOptions.DontRequireReceiver);
+        string text =@"/Saves/"+ObjInputField.GetComponent<InputField>().text+".json";
+        treeBuilder.SendMessage("Save", text, SendMessageOptions.DontRequireReceiver);
         ObjInputField.SetActive(false);
         ObjButton.SetActive(false);
     }

@@ -200,7 +200,7 @@ public class InputFieldController : MonoBehaviour, IDragHandler, IPointerDownHan
     }
     private void writeJson(BlockList blockList)
     {
-        string filePath = Application.dataPath + @"/Data1.json";
+        string filePath = Application.dataPath + treeBuilder.GetComponent<TreeBulider>().fileName;
         StreamWriter sw = new StreamWriter(filePath);
         string json = JsonMapper.ToJson(blockList.list);
         json = "{ \"list\":" + json + "}";
@@ -210,7 +210,7 @@ public class InputFieldController : MonoBehaviour, IDragHandler, IPointerDownHan
     }
     private BlockList readJson()
     {
-        string filePath = Application.dataPath + @"/Data1.json";
+        string filePath = Application.dataPath + treeBuilder.GetComponent<TreeBulider>().fileName;
         StreamReader sr = new StreamReader(filePath);
         JsonReader js = new JsonReader(sr);
         BlockList blockList = JsonMapper.ToObject<BlockList>(js);

@@ -288,6 +288,31 @@ public class TreeBulider : MonoBehaviour
         }
         writeJson(ClipBoardList, @"/Saves/ClipBoard.json");
     }
+
+    public void newMap()
+    {
+        fileName = @"/Saves/template.json";
+        clearJson(fileName);
+        buildTree(fileName);
+        SetPos();
+    }
+    public void Save(string FileName)
+    {
+        fileName = FileName;
+        BlockList blockList = readJson(@"/Saves/template.json");
+        writeJson(blockList, fileName);
+        clearJson(@"/Saves/template.json");
+    }
+    public void Open(string FileName)
+    {
+        fileName = FileName;
+        if (!System.IO.File.Exists(Application.dataPath + FileName))
+        {
+            clearJson(FileName);
+        }
+        buildTree(fileName);
+        SetPos();
+    }
     private void writeJson(BlockList blockList, string fileName)
     {
         string filePath = Application.dataPath + fileName;
@@ -297,17 +322,6 @@ public class TreeBulider : MonoBehaviour
         sw.WriteLine(json);
         sw.Close();
         sw.Dispose();
-    }
-    public void newMap()
-    {
-
-        buildTree(@"/Saves/template.json");
-        fileName=@"/Saves/template.json";
-        SetPos();
-    }
-    public void Save()
-    {
-
     }
     private BlockList readJson(string fileName)
     {
@@ -322,7 +336,7 @@ public class TreeBulider : MonoBehaviour
     {
         string filePath = Application.dataPath + fileName;
         StreamWriter sw = new StreamWriter(filePath);
-        sw.WriteLine("{ \"list\":[]}");
+        sw.WriteLine("{ \"list\":[{\"Contents\":\"\",\"Pos\":0,\"PartentPos\":-1}]}");
         sw.Close();
         sw.Dispose();
     }
@@ -333,6 +347,10 @@ public class TreeBulider : MonoBehaviour
             DestroyImmediate(GameObject.Find(oldBlockList.list[i].Pos.ToString()));
         }
         DestroyImmediate(GameObject.Find(oldBlockList.list[0].Pos.ToString()));
+    }
+    public void Clean()
+    {
+        DestroyImmediate(GameObject.Find("0"));
     }
 
 }
