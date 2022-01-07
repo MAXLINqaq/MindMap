@@ -13,8 +13,6 @@ public class Block
     public string Contents { get; set; }
     public int Pos { get; set; }//自身在数组中的位置
     public int PartentPos { get; set; }//父节点的位置
-
-
 }
 public class BlockList
 {
@@ -24,78 +22,37 @@ public class BlockList
 public class TreeBulider : MonoBehaviour
 {
     public BlockList blockList = null;
-
+    public string fileName;
     public GameObject Level0;
     public GameObject Level1;
     public GameObject Level2;
 
+    private bool isFinished;
+
+    private bool isClipBoardExisted;
+    private BlockList ClipBoardList = new BlockList();
+    private int pastePos;
+
+
 
     void Start()
     {
-        buildTree();
+        fileName = @"/Saves/Data1.json";
+        isClipBoardExisted = false;
+        clearJson(@"/Saves/ClipBoard.json");
 
         //List<Block> list = new List<Block> { block, block1 };
         //File.WriteAllText(Application.dataPath + "/Data1.json", JsonMapper.ToJson(list));
 
     }
-    public void Save(Block block)
+    private void buildTree(string fileName)
     {
-        string filePath = Application.dataPath + @"/Data1.json";
-        StreamReader sr = new StreamReader(filePath);
-        JsonReader js = new JsonReader(sr);
-        BlockList blockList = JsonMapper.ToObject<BlockList>(js);
+        BlockList blockList = readJson(fileName);
         for (int i = 0; i < blockList.list.Count; i++)
         {
-            Debug.Log(blockList.list[i].Contents);
-        }
-        sr.Close();
 
-        if (!File.Exists(filePath))
-        {
-            blockList.list.Add(block);
-        }
-        else
-        {
-            bool bFind = false;
-            for (int i = 0; i < blockList.list.Count; i++)
-            {
-                Block saveBlock = blockList.list[i];
-                if (block.Contents == saveBlock.Contents)
-                {
-                    saveBlock.Pos = block.Pos;
-                    saveBlock.PartentPos = block.PartentPos;
-
-                    bFind = true;
-                    break;
-                }
-
-            }
-            if (!bFind)
-            {
-                blockList.list.Add(block);
-            }
-        }
-
-
-        StreamWriter sw = new StreamWriter(filePath);
-        string json = JsonMapper.ToJson(blockList.list);
-        json = "{ \"list\":" + json + "}";
-        sw.WriteLine(json);
-        sw.Close();
-        sw.Dispose();
-        AssetDatabase.Refresh();
-    }
-    private void buildTree()
-    {
-        string filePath = Application.dataPath + @"/Data1.json";
-        StreamReader sr = new StreamReader(filePath);
-        JsonReader js = new JsonReader(sr);
-        BlockList blockList = JsonMapper.ToObject<BlockList>(js);
-        sr.Close();
-        for (int i = 0; i < blockList.list.Count; i++)
-        {
             GameObject tempObject;
-            if (i == 0)
+            if (blockList.list[i].PartentPos == -1)
             {
                 tempObject = Instantiate(Level0);
             }
@@ -107,22 +64,275 @@ public class TreeBulider : MonoBehaviour
             {
                 tempObject = Instantiate(Level2);
             }
+
             tempObject.GetComponent<InputFieldController>().contents = blockList.list[i].Contents;
+            tempObject.GetComponent<InputFieldController>().Pos = blockList.list[i].Pos;
             tempObject.name = blockList.list[i].Pos.ToString();
 
             if (i == 0)
             {
-                tempObject.transform.parent = GameObject.Find("Map").gameObject.transform;
-                tempObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-
+                tempObject.transform.SetParent(GameObject.Find("Map").transform);
             }
             else
             {
-                tempObject.transform.parent = GameObject.Find(blockList.list[i].PartentPos.ToString()).gameObject.transform;
-                tempObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+                tempObject.transform.SetParent(GameObject.Find(blockList.list[i].PartentPos.ToString()).transform);
             }
         }
 
+    }
+    private void SetPos()
+    {
+        BlockList blockList = readJson(fileName);
+        GameObject tempObject;
+
+        int count = 0;
+        int[] child = new int[blockList.list.Count];
+        for (int i = 0; i < blockList.list.Count; i++)
+        {
+            tempObject = GameObject.Find(blockList.list[i].Pos.ToString());
+            if (i == 0)
+            {
+                tempObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);//将中心主题置于平面中央
+            }
+            for (int j = i + 1; j < blockList.list.Count; j++)
+            {
+                if (blockList.list[j].PartentPos == blockList.list[i].Pos)
+                {
+                    child[count] = blockList.list[j].Pos;
+                    count++;
+                }
+            }
+            GameObject tempSubObject;
+            if (count == 1)
+            {
+                tempSubObject = GameObject.Find(child[0].ToString());
+                tempSubObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(tempSubObject.GetComponent<RectTransform>().sizeDelta.x / 2 + 100, 0);
+                count = 0;
+            }
+            else
+            {
+                for (int j = 0; j < count; j++)
+                {
+                    tempSubObject = GameObject.Find(child[j].ToString());
+                    tempSubObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(tempSubObject.GetComponent<RectTransform>().sizeDelta.x / 2 + 100, (100 * (count / 2 - j)) / 2);
+                }
+                count = 0;
+            }
+        }
+    }
+    public void NewBlock(int Pos)
+    {
+        Block block = new Block();
+        BlockList blockList = readJson(fileName);
+        DestroyTree(blockList);
+
+        //为新块赋值
+        block.PartentPos = Pos;
+        block.Contents = "";
+        block.Pos = blockList.list.Count;
+        //添加到list并排序
+        blockList.list.Add(block);
+
+        for (int i = blockList.list.Count - 1; i > 1; i--)
+        {
+            if (blockList.list[i].PartentPos >= blockList.list[i - 1].PartentPos)
+            {
+                Pos = blockList.list[i].Pos;
+                //为每个方块重新赋值
+                for (int j = blockList.list.Count - 1; j > 1; j--)
+                {
+                    if (blockList.list[j].PartentPos >= Pos)
+                    {
+                        blockList.list[j].PartentPos++;
+                    }
+                    blockList.list[j].Pos = j;
+                }
+                break;
+            }
+            else
+            {
+                Block tempBlock = blockList.list[i];
+                blockList.list[i] = blockList.list[i - 1];
+                blockList.list[i - 1] = tempBlock;
+            }
+        }
+
+        writeJson(blockList, fileName);
+        buildTree(fileName);
+        SetPos();
+    }
+    public void DelectBlock(int Pos)
+    {
+        bool isExisted = false;
+        BlockList blockList = readJson(fileName);
+        DestroyTree(blockList);
+        int count = 0;
+        int[] DelectFlag = new int[blockList.list.Count];
+        DelectFlag[count] = Pos;
+        blockList.list.RemoveAt(Pos);
+        for (int i = 1; i < blockList.list.Count; i++)
+        {
+            for (int j = 0; j < blockList.list.Count; j++)
+            {
+                if (blockList.list[i].PartentPos == blockList.list[j].Pos)
+                {
+                    isExisted = true;
+                }
+            }
+            if (isExisted == false)
+            {
+                count++;
+                DelectFlag[count] = i;
+                blockList.list.RemoveAt(i);
+            }
+            isExisted = false;
+        }
+        for (int j = 0; j < count; j++)
+        {
+            for (int i = 1; i < blockList.list.Count; i++)
+            {
+
+                if (blockList.list[i].PartentPos > DelectFlag[j])
+                {
+                    blockList.list[i].PartentPos--;
+                }
+
+                blockList.list[i].Pos = i;
+            }
+        }
+        for (int i = 1; i < blockList.list.Count; i++)
+        {
+            blockList.list[i].Pos = i;
+        }
+
+        writeJson(blockList, fileName);
+        buildTree(fileName);
+        SetPos();
+    }
+    public void Copy(int Pos)
+    {
+        SaveClipBoard(Pos);
+    }
+    public void Cut(int Pos)
+    {
+        SaveClipBoard(Pos);
+        DelectBlock(Pos);
+    }
+    public void Paste(int Pos)
+    {
+        if (isClipBoardExisted)
+        {
+            int TempPos = Pos;
+            BlockList blockList = readJson(fileName);
+            DestroyTree(blockList);
+            BlockList ClipBoardList = readJson(@"/Saves/ClipBoard.json");
+            for (int k = 0; k < ClipBoardList.list.Count; k++)
+            {
+                blockList.list.Add(ClipBoardList.list[k]);
+                blockList.list[blockList.list.Count - 1].PartentPos = TempPos;
+                blockList.list[blockList.list.Count - 1].Pos = blockList.list.Count - 1;
+                for (int i = blockList.list.Count - 1; i > 1; i--)
+                {
+                    if (blockList.list[i].PartentPos >= blockList.list[i - 1].PartentPos)
+                    {
+                        Pos = blockList.list[i].Pos;
+                        TempPos = blockList.list[i].Pos;
+                        //为每个方块重新赋值
+                        for (int j = blockList.list.Count - 1; j > 1; j--)
+                        {
+                            if (blockList.list[j].PartentPos >= Pos)
+                            {
+                                blockList.list[j].PartentPos++;
+                            }
+                            blockList.list[j].Pos = j;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        Block tempBlock = blockList.list[i];
+                        blockList.list[i] = blockList.list[i - 1];
+                        blockList.list[i - 1] = tempBlock;
+                    }
+                }
+            }
+            writeJson(blockList, fileName);
+            buildTree(fileName);
+            SetPos();
+        }
+    }
+    private void SaveClipBoard(int Pos)
+    {
+        bool isExisted = false;
+        clearJson(@"/Saves/ClipBoard.json");
+        BlockList blockList = readJson(fileName);
+        BlockList ClipBoardList = readJson(@"/Saves/ClipBoard.json");
+        isClipBoardExisted = true;
+        ClipBoardList.list.Add(blockList.list[Pos]);
+        blockList.list.RemoveAt(Pos);
+        for (int i = 1; i < blockList.list.Count; i++)
+        {
+            for (int j = 0; j < blockList.list.Count; j++)
+            {
+                if (blockList.list[i].PartentPos == blockList.list[j].Pos)
+                {
+                    isExisted = true;
+                }
+            }
+            if (isExisted == false)
+            {
+                ClipBoardList.list.Add(blockList.list[i]);
+                blockList.list.RemoveAt(i);
+            }
+            isExisted = false;
+        }
+        writeJson(ClipBoardList, @"/Saves/ClipBoard.json");
+    }
+    private void writeJson(BlockList blockList, string fileName)
+    {
+        string filePath = Application.dataPath + fileName;
+        StreamWriter sw = new StreamWriter(filePath);
+        string json = JsonMapper.ToJson(blockList.list);
+        json = "{ \"list\":" + json + "}";
+        sw.WriteLine(json);
+        sw.Close();
+        sw.Dispose();
+    }
+    public void newMap()
+    {
+
+        buildTree(@"/Saves/template.json");
+        fileName=@"/Saves/template.json";
+        SetPos();
+    }
+    public void Save()
+    {
+
+    }
+    private BlockList readJson(string fileName)
+    {
+        string filePath = Application.dataPath + fileName;
+        StreamReader sr = new StreamReader(filePath);
+        JsonReader js = new JsonReader(sr);
+        BlockList blockList = JsonMapper.ToObject<BlockList>(js);
+        sr.Close();
+        return blockList;
+    }
+    private void clearJson(string fileName)
+    {
+        string filePath = Application.dataPath + fileName;
+        StreamWriter sw = new StreamWriter(filePath);
+        sw.WriteLine("{ \"list\":[]}");
+        sw.Close();
+        sw.Dispose();
+    }
+    private void DestroyTree(BlockList oldBlockList)
+    {
+        for (int i = oldBlockList.list.Count - 1; i > 0; i--)
+        {
+            DestroyImmediate(GameObject.Find(oldBlockList.list[i].Pos.ToString()));
+        }
+        DestroyImmediate(GameObject.Find(oldBlockList.list[0].Pos.ToString()));
     }
 
 }
